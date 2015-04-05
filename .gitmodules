@@ -1,0 +1,3 @@
+[submodule "spydht"]
+	path = spydht
+	url = https://github.com/kohlrabi23/spydht
