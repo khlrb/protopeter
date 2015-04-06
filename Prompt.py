@@ -7,14 +7,15 @@ class Prompt:
         self.commands = {
                 'status' : self.updateStatus,
                 'lookup' : self.lookup,
+                'edit' : self.editProfile,
                 'help' : self.showHelp,
                 'quit' : self.quit
                 }
 
     def prompt(self):
         i = raw_input("> ")
-        if i in command.keys():
-            command[i]()
+        if i in self.commands.keys():
+            self.commands[i]()
         else:
             print "command not found: " + i
 
@@ -38,6 +39,13 @@ class Prompt:
         except KeyError:
             print "Can't find item '" + k + "'"
 
+    def editProfile(self):
+        self.client.nick = raw_input("nick: ")
+        self.client.bio = raw_input("bio: ")
+        self.client.website = raw_input("website: ")
+
+        self.client.announceProfile()
+
     def showHelp(self):
         description = {
                 'status' : "update your status (a.k.a. tweet)",
@@ -50,6 +58,6 @@ class Prompt:
         for k, v in description.iteritems():
             print k + ": " + v
 
-    def quit():
+    def quit(self):
         self.client.running = False
 
