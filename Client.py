@@ -24,10 +24,10 @@ class Client:
         name_ok = False
 
         while name_ok == False:
-            self.name = raw_input("choose a username: ")
+            self.username = raw_input("choose a username: ")
 
             try:
-                u = self.dht[self.name]
+                u = self.dht[self.username]
             except KeyError:
                 u = None
 
@@ -37,6 +37,11 @@ class Client:
                 print "already taken!"
 
         self.last_status = None
+        self.nick = ''
+        self.bio = ''
+        self.website = ''
+
+        self.announceProfile()
 
     def announceProfile(self):
         self.dht[self.username] = json.dumps({
