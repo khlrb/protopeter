@@ -2,6 +2,8 @@ from spydht import DHT
 
 import nacl.signing, json, uuid
 
+from pprint import pprint
+
 class Client:
     def __init__(self, hostname, port, boot_host=None, boot_port=None):
         print "generating keys..."
@@ -16,6 +18,8 @@ class Client:
             print "I'm the first node. Connect to me!"
 
             self.dht = DHT(hostname, port, self.key)
+
+        pprint(self.dht.server.server_address)
 
         self.running = True
 
