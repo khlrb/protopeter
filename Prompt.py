@@ -22,12 +22,9 @@ class Prompt:
     def updateStatus(self):
         text = raw_input("text: ")
 
-        try:
-            s = self.client.updateStatus(text)
+        s = self.client.updateStatus(text)
 
-            print "success: " + s
-        except:
-            print "error"
+        print s
 
     def lookup(self):
         k = raw_input("username or status id: ")

@@ -18,8 +18,10 @@ bio: floating around~
 website: http://example.org
 > status
 text: Hi! This is my first status update.
+59c6620b-cbd0-485e-8bc8-b6868ebf0ee4
 > status
 text: Hi! This is my second status update.
+42b3ecaf-9e77-4291-9035-88238fd00e95
 >
 ```
 

@@ -61,3 +61,5 @@ class Client:
         self.last_status = i
 
         self.announceProfile()
+
+        return i

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import Prompt, Client
 
 import sys
