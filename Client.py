@@ -1,7 +1,5 @@
 from spydht import DHT
 
-from datetime import datetime
-
 import nacl.signing, json, uuid
 
 class Client:
@@ -24,7 +22,7 @@ class Client:
         name_ok = False
 
         while name_ok == False:
-            self.username = raw_input("choose a username: ")
+            self.username = raw_input("Choose a username: ")
 
             try:
                 u = self.dht[self.username]
@@ -34,7 +32,7 @@ class Client:
             if u == None:
                 name_ok = True
             else:
-                print "already taken!"
+                print "This username is already taken!"
 
         self.last_status = None
         self.nick = ''
@@ -52,12 +50,11 @@ class Client:
             })
 
     def updateStatus(self, text):
-        i = uuid.uuid4()
+        i = str(uuid.uuid4())
 
-        dht[i] = json.dumps({
+        self.dht[i] = json.dumps({
             'author' : self.username,
             'text' : text,
-            'timestamp' : utcnow(),
             'previous_status' : self.last_status
             })
 
