@@ -10,7 +10,7 @@ class Client:
 
         self.key = nacl.signing.SigningKey.generate()
 
-        if bootstrap_host and bootstrap_port:
+        if boot_host and boot_port:
             print "bootstrapping..."
 
             self.dht = DHT(hostname, port, self.key, boot_host=boot_host, boot_port=boot_port)
@@ -18,6 +18,25 @@ class Client:
             print "I'm the first node. Connect to me!"
 
             self.dht = DHT(hostname, port, self.key)
+
+        self.running = True
+
+        name_ok = False
+
+        while name_ok == False:
+            self.name = raw_input("choose a username: ")
+
+            try:
+                u = self.dht[self.name]
+            except KeyError:
+                u = None
+
+            if u == None:
+                name_ok = True
+            else:
+                print "already taken!"
+
+        self.last_status = None
 
     def announceProfile(self):
         self.dht[self.username] = json.dumps({
