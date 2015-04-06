@@ -2,6 +2,7 @@ import Prompt, Client
 
 import sys
 
+from pprint import pprint
 
 port = int(raw_input("Which port should I listen on? "))
 
@@ -12,6 +13,8 @@ else:
 
 
 p = Prompt.Prompt(c)
+
+pprint(p.commands.keys())
 
 while c.running:
     p.prompt()
